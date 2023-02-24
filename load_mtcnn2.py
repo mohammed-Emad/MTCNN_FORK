@@ -29,7 +29,22 @@ class load_all(threading.Thread):
                
          print("load_all--- done")
 
-def crop_align(img,bounding_boxes):
+     
+class initApp():
+     def __init__(self):
+         self.models = load_all()
+         self.models.start()
+
+         #For Mtcnn
+         self.minsize = 40                  # minimum size of face
+         self.threshold = [ 0.6, 0.7, 0.9 ]  # three steps's threshold
+         self.factor = 0.709                 # scale factor
+
+     def DetectFace(self, img):
+         bounding_boxes, points = detect_face.detect_face(img, self.minsize, self.models.pnet, self.models.rnet, self.models.onet, self.threshold, self.factor)
+         return bounding_boxes
+     
+def Crop_Align(img,bounding_boxes):
     bounding_boxes = np.array([bounding_boxes])
 
     nrof_faces = bounding_boxes.shape[0]
