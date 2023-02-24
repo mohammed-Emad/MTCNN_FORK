@@ -13,16 +13,12 @@ import sklearn
 print(sklearn.__version__)
 
 
-
 image_size = 160
 detect_multiple_faces = False
 margin = 32
 #--par--Classifier----#
 batch_size = 100
 seed = 666
- 
-
-SVM_MODEL = 'svm_model.pkl'
 
 
 def Embedding(img_list ,load_m):
