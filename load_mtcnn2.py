@@ -18,8 +18,6 @@ image_size = 160
 
 lib_root = Path(__file__).parent.absolute()
 
-print("File Path:", lib_root)
-
 
 
 #---------------------------
