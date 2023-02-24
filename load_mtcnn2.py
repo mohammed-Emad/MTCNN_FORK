@@ -30,7 +30,7 @@ class load_all(threading.Thread):
          print("load_all--- done")
 
      
-class initApp():
+class InitFace():
      def __init__(self):
          self.models = load_all()
          self.models.start()
