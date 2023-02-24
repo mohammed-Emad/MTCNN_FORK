@@ -77,7 +77,6 @@ def Embedding(nrof_faces,paths_batch,load_m):
             embedding_size = load_m.embedding_size 
             
             # Run forward pass to calculate embeddings
-            print('Calculating features for images')
 
             images = [facenet.prewhiten(cv2.cvtColor(nrof_faces, cv2.COLOR_BGR2RGB))]
             nrof_images = len(images)
