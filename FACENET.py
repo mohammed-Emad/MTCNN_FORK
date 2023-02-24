@@ -20,7 +20,7 @@ margin = 32
 batch_size = 100
 seed = 666
 
-def Train(load_m ,data_dir = "data_algin"):
+def EmbeddingList(load_m ,data_dir = "data_algin"):
             print("args.seed??",seed)
 
             sess = load_m.sess
@@ -67,7 +67,7 @@ def Train(load_m ,data_dir = "data_algin"):
             class_names = [ cls.name.replace('_', ' ') for cls in dataset]
             return emb_array, labels, class_names
 
-def classifier_my(nrof_faces,paths_batch,load_m):
+def Embedding(nrof_faces,paths_batch,load_m):
 
             # Get input and output tensors
             sess = load_m.sess
@@ -92,7 +92,7 @@ def classifier_my(nrof_faces,paths_batch,load_m):
 
             return emb_array
 
-def Embedding(img_list ,load_m):
+def Embedding_old(img_list ,load_m):
             # Get input and output tensors
             sess = load_m.sess
             images_placeholder = load_m.images_placeholder
