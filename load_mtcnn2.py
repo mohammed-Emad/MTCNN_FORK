@@ -3,6 +3,7 @@ import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 import numpy as np
 from .mtcnn2 import detect_face
+from .facenet2 import facenet
 import threading
 from keras.models import load_model
 import cv2
