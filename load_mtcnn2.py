@@ -25,7 +25,7 @@ class load_all(threading.Thread):
             gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_memory_fraction)
             self.sess2 = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options,log_device_placement=False))
             with self.sess2.as_default():
-               self.pnet, self.rnet, self.onet = detect_face.create_mtcnn(self.sess2, os.path.join(lib_root, '/mtcnn2'))
+               self.pnet, self.rnet, self.onet = detect_face.create_mtcnn(self.sess2, os.path.join(lib_root, 'mtcnn2'))
                
          print("load_all--- done")
 
