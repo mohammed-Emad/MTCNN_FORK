@@ -13,7 +13,8 @@ detect_multiple_faces = False #get one face
 margin = 32
 image_size = 160
 ######################
-
+import os
+print(os.path.dirname(__file__))
 
 class load_all(threading.Thread):
      def __init__(self):
