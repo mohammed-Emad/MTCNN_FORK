@@ -24,15 +24,13 @@ print("File Path:", lib_root)
 
 #---------------------------
 ######################
-image_size = 160
 detect_multiple_faces = False
-margin = 32
 #--par--Classifier----#
 batch_size = 100
 seed = 666
 
 CLASSIFIER_FILENAME = 'svm_model.pkl'
-MODEL = r'20170512-110547.pb'
+MODEL = r'./20180402-114759/20180402-114759.pb'
 gpu_memory_fraction = 0.5
 
 
