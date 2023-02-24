@@ -19,11 +19,42 @@ lib_root = Path(__file__).parent.absolute()
 
 print("File Path:", lib_root)
 
+
+
+#---------------------------
+######################
+image_size = 160
+detect_multiple_faces = False
+margin = 32
+#--par--Classifier----#
+batch_size = 100
+seed = 666
+
+CLASSIFIER_FILENAME = 'svm_model.pkl'
+MODEL = r'20170512-110547.pb'
+gpu_memory_fraction = 0.5
+
+
+
 class load_all(threading.Thread):
-     def __init__(self):
+     def __init__(self,MODEL):
          threading.Thread.__init__(self)
          print('Loading models')
-
+         with tf.Graph().as_default():
+            gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_memory_fraction)
+            #self.sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options,log_device_placement=False))
+            self.sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, device_count={'GPU': 0, 'CPU': 8}, log_device_placement=False))
+            
+            with self.sess.as_default():
+               np.random.seed(seed=seed)
+               
+               facenet.load_model(MODEL)
+               # Get input and output tensors
+               self.images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
+               self.embeddings = tf.get_default_graph().get_tensor_by_name("embeddings:0")
+               self.phase_train_placeholder = tf.get_default_graph().get_tensor_by_name("phase_train:0")
+               self.embedding_size = self.embeddings.get_shape()[1]
+               
          with tf.Graph().as_default():
             gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_memory_fraction)
             self.sess2 = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options,log_device_placement=False))
