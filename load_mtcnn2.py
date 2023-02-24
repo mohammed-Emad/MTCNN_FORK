@@ -6,6 +6,7 @@ from .mtcnn2 import detect_face
 import threading
 from keras.models import load_model
 import cv2
+from pathlib import Path
 
 ######################
 gpu_memory_fraction = 1.0
@@ -13,8 +14,10 @@ detect_multiple_faces = False #get one face
 margin = 32
 image_size = 160
 ######################
-import os
-lib_root = os.path.dirname(__file__)
+
+lib_root = Path(__file__).absolute()
+
+print("File Path:", lib_root)
 
 class load_all(threading.Thread):
      def __init__(self):
