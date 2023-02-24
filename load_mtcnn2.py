@@ -36,8 +36,8 @@ gpu_memory_fraction = 0.5
 
 
 class load_all(threading.Thread):
-     def __init__(self,MODEL):
-         threading.Thread.__init__(self,MODEL)
+     def __init__(self):
+         threading.Thread.__init__(self)
          print('Loading models')
          with tf.Graph().as_default():
             gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_memory_fraction)
